@@ -8,15 +8,22 @@ public class UserDetails {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         String firstName="abc";
-        while (!validateFirstName(firstName)) {
+        String lastName="abc";
+        while (!validateName(firstName)) {
             System.out.println("Enter First Name");
             firstName = scan.nextLine();
-            if (!validateFirstName(firstName))
+            if (!validateName(firstName))
+                System.out.println("Invalid Input");
+        }
+        while (!validateName(lastName)) {
+            System.out.println("Enter Last Name");
+            lastName = scan.nextLine();
+            if (!validateName(lastName))
                 System.out.println("Invalid Input");
         }
     }
 
-    private static boolean validateFirstName(String firstName) {
+    private static boolean validateName(String firstName) {
         Pattern pattern = Pattern.compile("^[A-Z][a-z]{2,}$");
         Matcher matcher = pattern.matcher(firstName);
         return matcher.matches();

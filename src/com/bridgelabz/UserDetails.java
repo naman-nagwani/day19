@@ -10,6 +10,7 @@ public class UserDetails {
         String firstName="abc";
         String lastName="abc";
         String eMail="abc";
+        String phoneNumber="abc";
         while (!validateName(firstName)) {
             System.out.println("Enter First Name");
             firstName = scan.nextLine();
@@ -28,6 +29,18 @@ public class UserDetails {
             if (!validateEMail(eMail))
                 System.out.println("Invalid Input");
         }
+        while (!validatePhoneNumber(phoneNumber)) {
+            System.out.println("Enter Phone Number");
+            phoneNumber = scan.nextLine();
+            if (!validatePhoneNumber(phoneNumber))
+                System.out.println("Invalid Input");
+        }
+    }
+
+    private static boolean validatePhoneNumber(String phoneNumber) {
+        Pattern pattern = Pattern.compile("^[0-9]{2} [0-9]{10}$");
+        Matcher matcher = pattern.matcher(phoneNumber);
+        return matcher.matches();
     }
 
     private static boolean validateEMail(String eMail) {

@@ -11,6 +11,7 @@ public class UserDetails {
         String lastName="abc";
         String eMail="abc";
         String phoneNumber="abc";
+        String password="abc";
         while (!validateName(firstName)) {
             System.out.println("Enter First Name");
             firstName = scan.nextLine();
@@ -35,6 +36,18 @@ public class UserDetails {
             if (!validatePhoneNumber(phoneNumber))
                 System.out.println("Invalid Input");
         }
+        while (!validatePassword(password)) {
+            System.out.println("Enter Password");
+            password = scan.nextLine();
+            if (!validatePassword(password))
+                System.out.println("Invalid Input");
+        }
+    }
+
+    private static boolean validatePassword(String password) {
+        Pattern pattern = Pattern.compile("^.{8,}$");
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
     }
 
     private static boolean validatePhoneNumber(String phoneNumber) {
